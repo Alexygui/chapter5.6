@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="js/jquery.js" ></script>
+		<script>
+			$(function(){
+				//排除表头的计数，表头不添加样式
+				$('tbody>tr:odd').addClass('odd');
+				$('tbody>tr:even').addClass('even');
+				$('tbody>tr').click(function(){
+					if($(this).hasClass('selected')){
+						$(this)
+							.removeClass('selected')
+							.find(':checkbox').attr('checked',false);
+					}else {
+						$(this)
+							.addClass('selected')
+							.find(':checkbox').attr('checked',true);
+					}
+				})
+				
+				$('tbody>tr:has(:selected)').addClass('selected');
+			})
+		</script>
+	</head>
+	<body>
+		<table>
+			<thead><tr><th></th><th>姓名</th><th>性别</th><th>暂住地</th></tr></thead>
+			<tbody>
+				<tr><td><input type="checkbox" name="choice"></td><td>张山</td><td>男</td><td>浙江宁波</td></tr>
+				<tr><td><input type="checkbox" name="choice"></td><td>李四</td><td>女</td><td>浙江北京</td></tr>
+				<tr><td><input type="checkbox" name="choice"></td><td>王五</td><td>男</td><td>浙江杭州</td></tr>
+				<tr><td><input type="checkbox" name="choice"></td><td>赵六</td><td>男</td><td>浙江绍兴</td></tr>
+				<tr><td><input type="checkbox" name="choice"></td><td>rain</td><td>女</td><td>浙江温州</td></tr>
+				<tr><td><input type="checkbox" name="choice"></td><td>blizzard</td><td>男</td><td>浙江上海</td></tr>
+			</tbody>
+		</table>
+	</body>
+</html>

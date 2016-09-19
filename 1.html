@@ -7,22 +7,34 @@
 		<script type="text/javascript" src="js/jquery.js" ></script>
 		<script>
 			$(function(){
-				$('tr:odd').addClass('odd');
-				$('tr:even').addClass('even');
+				//排除表头的计数，表头不添加样式
+				$('tbody>tr:odd').addClass('odd');
+				$('tbody>tr:even').addClass('even');
+//				$('tr:contains("王五")').addClass('selected');
+				$('tbody>tr').click(function(){
+					$(this)
+						.addClass('selected')
+						.siblings().removeClass('selected')
+						.end()
+						.find(':radio').attr('checked',true);
+				});
 				
+				//如果单选框默认情况下是选择的，则高亮色
+//				$('tbody :radio:checked').parents('tr').addClass('selected');
+				$('tbody>tr:has(:checked)').addClass('selected');
 			})
 		</script>
 	</head>
 	<body>
 		<table>
-			<thead><tr><th>姓名</th><th>性别</th><th>暂住地</th></tr></thead>
+			<thead><tr><th></th><th>姓名</th><th>性别</th><th>暂住地</th></tr></thead>
 			<tbody>
-				<tr><td>张山</td><td>男</td><td>浙江宁波</td></tr>
-				<tr><td>李四</td><td>女</td><td>浙江北京</td></tr>
-				<tr><td>王五</td><td>男</td><td>浙江杭州</td></tr>
-				<tr><td>赵六</td><td>男</td><td>浙江绍兴</td></tr>
-				<tr><td>rain</td><td>女</td><td>浙江温州</td></tr>
-				<tr><td>blizzard</td><td>男</td><td>浙江上海</td></tr>
+				<tr><td><input type="radio" name="choice"></td><td>张山</td><td>男</td><td>浙江宁波</td></tr>
+				<tr><td><input type="radio" name="choice"></td><td>李四</td><td>女</td><td>浙江北京</td></tr>
+				<tr><td><input type="radio" name="choice"></td><td>王五</td><td>男</td><td>浙江杭州</td></tr>
+				<tr><td><input type="radio" name="choice"></td><td>赵六</td><td>男</td><td>浙江绍兴</td></tr>
+				<tr><td><input type="radio" name="choice"></td><td>rain</td><td>女</td><td>浙江温州</td></tr>
+				<tr><td><input type="radio" name="choice"></td><td>blizzard</td><td>男</td><td>浙江上海</td></tr>
 			</tbody>
 		</table>
 	</body>
